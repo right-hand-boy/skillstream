@@ -44,10 +44,23 @@ export interface MyContext {
   pubsub: PubSub;
 }
 
+const allowedOrigins = [
+  "https://skillstream-959dd.web.app",
+  "http://localhost:3000",  // or any port you're using locally
+  "http://127.0.0.1:3000",
+];
+
 const corsOptions = {
-  origin: "*",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
+
 
 const wsServer = new WebSocketServer({
   server: httpServer,
@@ -96,7 +109,7 @@ const serverCleanup = useServer(
   app.use(
     "/graphql",
     [
-      cors<cors.CorsRequest>(corsOptions),
+      cors(corsOptions),
       cookieParser(),
       json({ limit: "50mb" }),
     ],
