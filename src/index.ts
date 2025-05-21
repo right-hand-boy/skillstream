@@ -8,7 +8,7 @@ import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHt
 import cors from "cors";
 import http from "http";
 import { Secret } from "jsonwebtoken";
-
+import { CorsOptions } from "cors";
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { configDotenv } from "dotenv";
 import type { CorsOptionsDelegate } from "cors";
@@ -45,19 +45,17 @@ export interface MyContext {
   pubsub: PubSub;
 }
 
-const corsOptions: CorsOptionsDelegate = (origin, callback) => {
-  const allowedOrigins = [
-    "https://skillstream-959dd.web.app",
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
-  ];
-
-  if (!origin || allowedOrigins.includes(origin)) {
-    callback(null, true);
-  } else {
-    callback(new Error("Not allowed by CORS"));
-  }
+const corsOptions: CorsOptions = {
+  origin: ((origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  }) as CorsOptions['origin'],
+  credentials: true,
 };
+
 
 app.use(cors(corsOptions));
 
