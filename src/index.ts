@@ -11,6 +11,7 @@ import { Secret } from "jsonwebtoken";
 
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
 import { configDotenv } from "dotenv";
+import type { CorsOptionsDelegate } from "cors";
 import { Request, Response } from "express";
 import { GraphQLError } from "graphql";
 import jwt from "jsonwebtoken";
@@ -44,25 +45,21 @@ export interface MyContext {
   pubsub: PubSub;
 }
 
-const allowedOrigins = [
-  "https://skillstream-959dd.web.app",
-  "http://localhost:3000",  // or any port you're using locally
-  "http://127.0.0.1:3000",
-];
+const corsOptions: CorsOptionsDelegate = (origin, callback) => {
+  const allowedOrigins = [
+    "https://skillstream-959dd.web.app",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+  ];
 
-const corsOptions: CorsOptions = {
-  origin: function (
-    origin: string | undefined,
-    callback: (err: Error | null, allow?: boolean) => void
-  ) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
+  if (!origin || allowedOrigins.includes(origin)) {
+    callback(null, true);
+  } else {
+    callback(new Error("Not allowed by CORS"));
+  }
 };
+
+app.use(cors(corsOptions));
 
 
 const wsServer = new WebSocketServer({
