@@ -1,0 +1,2 @@
+fo_special_requirement_lookup
+fo_special_requirement_lookup.model

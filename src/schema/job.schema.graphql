@@ -1,0 +1,22 @@
+# import '../generated/schema.graphql'
+extend type Job {
+  employer_id: Int!
+  hasApplied: Boolean!
+}
+input CreateJobInput {
+  name: String!
+  description: String!
+  skill_id: Int
+}
+type Query {
+  # Job: Job!
+  Jobs: [Job!]!
+  myJobs: [Job!]!
+  frelancerJobFeed: [Job!]!
+  appliedJobs: [Job!]!
+}
+type Mutation {
+  createJob(input: CreateJobInput): Job
+  closeJob(id: Int!): Boolean!
+  banJob(job_id: Int!, ban: Boolean!): Boolean!
+}

@@ -1,0 +1,171 @@
+scalar Date
+scalar JSON
+
+type Query {
+  _: Boolean
+}
+
+type Mutation {
+  _: Boolean
+}
+
+type Subscription {
+  _: Boolean
+}
+
+type AdminFeedback {
+  id: Int!
+  name: String!
+  email: String!
+  subject: String!
+  content: String!
+  createdAt: Date!
+  updatedAt: Date!
+}
+
+type Application {
+  id: Int!
+  price_offer: Float!
+  about_freelancer: String!
+  createdAt: Date!
+  updatedAt: Date!
+  freelancer: User!
+  Job: Job!
+}
+
+type Contract {
+  id: Int!
+  status: String!
+  start_date: Date!
+  deadline_date: Date!
+  offered_amount: Float!
+  final_amount: Float
+  createdAt: Date!
+  updatedAt: Date!
+  freelancer: User!
+  employer: User!
+  job: Job!
+  payment: Payment
+}
+
+type Feedback {
+  id: Int!
+  content: String!
+  rating: Float!
+  seen: Boolean!
+  createdAt: Date!
+  updatedAt: Date!
+  from: User!
+  to: User!
+}
+
+type Job {
+  id: Int!
+  name: String!
+  description: String!
+  posted_date: Date!
+  status: Boolean!
+  banned: Boolean!
+  createdAt: Date!
+  updatedAt: Date!
+  employer: User!
+  skill: Skill
+  applications: [Application!]!
+  contracts: [Contract!]!
+}
+
+type Message {
+  id: Int!
+  content: String!
+  seen: Boolean
+  createdAt: Date!
+  updatedAt: Date!
+  sender: User!
+  receiver: User!
+}
+
+type Notification {
+  id: Int!
+  message: String!
+  type: String!
+  seen: Boolean
+  is_read: Boolean
+  link: JSON!
+  createdAt: Date!
+  updatedAt: Date!
+  recipient: User
+}
+
+type Payment {
+  id: Int!
+  amount: Float!
+  status: String!
+  tx_ref: String!
+  checkout_url: String!
+  createdAt: Date!
+  updatedAt: Date!
+  contract: Contract!
+  freelancer: User!
+  employer: User!
+}
+
+type Skill {
+  id: Int!
+  name: String!
+  createdAt: Date!
+  updatedAt: Date!
+  users: [User!]!
+  jobs: [Job!]!
+}
+
+type Token {
+  id: Int!
+  token: String!
+  expiryDate: Date!
+  createdAt: Date!
+  updatedAt: Date!
+  user: User
+}
+
+type User {
+  id: Int!
+  avatar: String
+  firstname: String!
+  lastname: String!
+  fullname: String!
+  username: String!
+  gender: String
+  password: String!
+  bio: String
+  phone: String
+  email: String!
+  address: String
+  portfolio_dir: String
+  role: String!
+  is_verified: Boolean!
+  banned: Boolean!
+  resetToken: String
+  resetTokenExpires: Date
+  createdAt: Date!
+  updatedAt: Date!
+  skills: [Skill!]!
+  jobs: [Job!]!
+  feedbacks: [Feedback!]!
+  balance: UserBalance
+}
+
+type UserBalance {
+  id: Int!
+  balance: Float!
+  createdAt: Date!
+  updatedAt: Date!
+  user: User!
+}
+
+type UserSkill {
+  id: Int!
+  createdAt: Date!
+  updatedAt: Date!
+  skill: Skill!
+  user: User!
+}

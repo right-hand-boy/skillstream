@@ -1,0 +1,48 @@
+# import '../generated/schema.graphql'
+
+input CreateContractInput {
+  start_date: Date!
+  deadline_date: Date!
+  offered_amount: Float!
+  freelancer_id: Int!
+  job_id: Int!
+}
+
+input FinalizeContractInput {
+  id: Int!
+  start_date: Date!
+  deadline_date: Date!
+  final_amount: Float!
+  freelancer_id: Int!
+  job_id: Int!
+}
+input AcceptContractInput {
+  contract_id: Int!
+  accepted: Boolean!
+}
+type PaymentURL {
+  checkout_url: String!
+}
+input JobProgressInput {
+  contract_id: Int!
+  status: Boolean!
+}
+type Query {
+  #   contract: Contract!
+  contracts: [Contract!]!
+  employerContracts: [Contract!]!
+  freelancerContracts: [Contract!]!
+}
+
+type Mutation {
+  createContract(input: CreateContractInput): Contract!
+  finalizeContract(input: FinalizeContractInput): Contract!
+  acceptContract(input: AcceptContractInput): Contract!
+  jobProgress(input: JobProgressInput!): Contract!
+  approveJobReleaseFund(input: JobProgressInput!): Boolean!
+}
+type Subscription {
+  contractRequested: Contract!
+  contractAccepted: Payment!
+  contractStarted: Contract!
+}

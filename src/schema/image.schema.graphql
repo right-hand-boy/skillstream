@@ -1,0 +1,7 @@
+input ImageProp {
+  fileName: String
+  name: String!
+  size: Int!
+  type: String!
+  uri: String!
+}

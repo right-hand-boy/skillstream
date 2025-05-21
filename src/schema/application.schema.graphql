@@ -1,0 +1,21 @@
+# import '../generated/schema.graphql'
+extend type Application {
+  freelancer_id: Int!
+  job_id: Int!
+}
+input ApplyingInput {
+  price_offer: Float!
+  about_freelancer: String!
+  job_id: Int!
+  employer_id: Int!
+}
+type Query {
+  application: Application!
+  applications: [Application!]!
+}
+type Mutation {
+  applyForJob(input: ApplyingInput): Application
+}
+type Subscription {
+  newApplication: Notification!
+}

@@ -1,0 +1,15 @@
+# import '../generated/schema.graphql'
+type Query {
+  messages: JSON
+}
+
+input MessageInput {
+  content: String!
+  receiver_id: Int!
+}
+type Mutation {
+  sendMessage(input: MessageInput!): Message!
+}
+type Subscription {
+  newMessage: Message!
+}

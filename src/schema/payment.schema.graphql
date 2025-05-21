@@ -1,0 +1,14 @@
+# import '../generated/schema.graphql'
+input CreatePaymentInput {
+  amount: Float!
+  contract_id: Int!
+  freelancer_id: Int!
+}
+input ConfirmPaymentInput {
+  paid: Boolean!
+  payment_id: Int!
+}
+type Mutation {
+  createPayment(input: CreatePaymentInput!): Payment!
+  confirmPayment(input: ConfirmPaymentInput!): String!
+}

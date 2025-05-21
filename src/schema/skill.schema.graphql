@@ -1,0 +1,5 @@
+# import '../generated/schema.graphql'
+
+type Mutation {
+  createSkill(name: String!): Skill!
+}

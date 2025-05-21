@@ -1,0 +1,14 @@
+
+{
+  "db": {
+    "host": "localhost",
+    "name": "skillstream",
+    "user": "admin",
+    "password": "vbnm5657",
+    "dialect": "mysql",
+    "port": 3306
+  },
+  "port": 3002,
+  "jwt_secret": "f62df8ecc4a85aa9b09702422c0f4d401af3af7ec6ebf2a7",
+  "enc_key": "31362e00db54edbfd79a9693103b9f0da65019cb11f88dd0"
+}

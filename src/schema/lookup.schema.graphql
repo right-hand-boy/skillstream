@@ -1,0 +1,5 @@
+# import '../generated/schema.graphql'
+
+type Query {
+  skills: [Skill!]!
+}

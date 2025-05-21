@@ -1,0 +1,43 @@
+schema:
+  - "src/generated/schema.graphql"
+  - "src/schema/**/*.graphql"
+generates:
+  "src/types/resolvers-types.ts":
+    config:
+      # onlyTypes: true
+      # immutableTypes: true
+      scalars:
+        Date: Date
+        JSON: object
+
+      # declarationKind: "interface"
+      strictScalars: true
+      namingConvention: "keep"
+      # printFieldsOnNewLines: true
+      typesSuffix: "Type"
+
+      useIndexSignature: true
+      skipTypename: false
+      preResolveTypes: true
+
+      onlyResolveTypeForInterfaces: true
+
+      declarationKind:
+        union: type
+        type: interface
+        input: type
+        scalar: interface
+        arguments: interface
+        interface: interface
+      enumsAsTypes: true
+      includeDirectives: true
+      commentDescriptions: true
+      flattenGeneratedTypes: true
+      avoidOptionals:
+        field: false
+        object: false
+        inputValue: false
+
+    plugins:
+      - "typescript"
+      # - "typescript-resolvers"

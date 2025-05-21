@@ -1,0 +1,82 @@
+# import '../generated/schema.graphql'
+
+input CreateUserInput {
+  firstname: String!
+  lastname: String!
+  username: String!
+  email: String!
+  password: String!
+  role: String!
+}
+input UpdateProfileInput {
+  id: Int!
+  gender: String!
+  avatar: String
+  bio: String!
+  phone: String!
+  address: String!
+  portfolio_dir: String!
+  skills: [Int!]!
+}
+
+input EditProfileInput {
+  id: Int!
+  firstname: String!
+  lastname: String!
+  gender: String!
+  avatar: String
+  bio: String!
+  phone: String!
+  address: String!
+  portfolio_dir: String!
+  skills: [Int!]!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type LogedInUser {
+  token: JSON!
+  user: User!
+}
+
+type Transaction {
+  id: ID!
+  from: String!
+  to: String!
+  amount: Float!
+  status: String!
+}
+
+type DashboardStats {
+  clientsCount: Int!
+  freelancersCount: Int!
+  jobsCount: Int!
+  contractsCount: Int!
+  applicationsCount: Int!
+  transactionsCount: Int!
+  recentTransactions: [Transaction!]!
+  freelancers: [User!]!
+}
+type Query {
+  user(id: Int!): User
+  users: [User]
+  employers: [User!]!
+  dashboardStats: DashboardStats
+}
+type Mutation {
+  createUser(input: CreateUserInput): User!
+  updateProfile(input: UpdateProfileInput): Boolean!
+  loginUser(input: LoginInput): LogedInUser
+  editProfile(input: EditProfileInput): Boolean!
+  banUser(user_id: Int!, ban: Boolean!): Boolean!
+  deleteUser(user_id: Int!): Boolean!
+  requestResetPassword(email: String!): String!
+  resetPassword(
+    email: String!
+    resetToken: String!
+    newPassword: String!
+  ): String!
+}

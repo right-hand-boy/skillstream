@@ -1,0 +1,16 @@
+# import '../generated/schema.graphql'
+
+input DepositMoneyInput {
+  user_id: Int!
+  email: String!
+  first_name: String!
+  last_name: String!
+  phone_number: String!
+  amount: Float!
+  callBackUrl: String!
+}
+
+type Mutation {
+  depositMoney(input: DepositMoneyInput): String!
+  verifyDeposit: String!
+}
