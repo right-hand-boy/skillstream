@@ -45,8 +45,9 @@ export interface MyContext {
 }
 const allowedOrigins = [
   "https://skillstream-959dd.web.app",
-  "http://localhost:3000",  // or any port you're using locally
+  "http://localhost:3000", 
   "http://127.0.0.1:3000",
+  "http://localhost:8081"
 ];
 const corsOptions: CorsOptions = {
   origin: ((origin, callback) => {
