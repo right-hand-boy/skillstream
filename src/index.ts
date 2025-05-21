@@ -21,7 +21,7 @@ import { UserAccount } from "./types/auth-types";
 import sequelize from "./utils/db.connection";
 import { useServer } from "graphql-ws/lib/use/ws";
 import { PubSub } from "graphql-subscriptions";
-
+import { CorsOptions } from "cors";
 import Contract from "./models/contract.model";
 import Payment from "./models/payment.model";
 import { Transaction } from "sequelize";
@@ -50,8 +50,11 @@ const allowedOrigins = [
   "http://127.0.0.1:3000",
 ];
 
-const corsOptions = {
-  origin: function (origin, callback) {
+const corsOptions: CorsOptions = {
+  origin: function (
+    origin: string | undefined,
+    callback: (err: Error | null, allow?: boolean) => void
+  ) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
