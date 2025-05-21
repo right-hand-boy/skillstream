@@ -1,11 +1,6 @@
 import path from "path";
 import { Sequelize } from "sequelize-typescript";
 
-import config from "config";
-import { DatabaseConfig } from "../types/database-types";
-
-const { host, name, user, password, port }: DatabaseConfig = config.get("db");
-
 // "host.docker.internal";
 const sequelize = new Sequelize({
   database: "railway",
