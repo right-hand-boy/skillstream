@@ -45,7 +45,7 @@ export interface MyContext {
 }
 
 const corsOptions = {
-  origin: true,
+  origin: "*",
   credentials: true,
 };
 
