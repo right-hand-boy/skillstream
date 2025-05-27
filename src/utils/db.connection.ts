@@ -5,9 +5,9 @@ import { Sequelize } from "sequelize-typescript";
 const sequelize = new Sequelize({
   database: "railway",
   username: "root",
-  password: "dGXZTQOdVVDiHTzfkCodpNtJVvzftrXI",
-  host: "crossover.proxy.rlwy.net",
-  port: 36719,
+  password: "HShaOfVHACzQBLUuELDJFYZsjJNfVyUO",
+  host: "turntable.proxy.rlwy.net",
+  port: 40059,
   dialect: "mysql",
   dialectOptions: {
     connectTimeout: 10000000,
