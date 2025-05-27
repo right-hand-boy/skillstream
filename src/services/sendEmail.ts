@@ -14,7 +14,7 @@ export const sendVerificationEmail = async (to: string, token: string) => {
     },
   });
 
-  const verificationLink = `https://skillstream-ooy8.onrender.com/api/verify?token=${token}`;
+  const verificationLink = `https://skillstream-63xr.onrender.com/api/verify?token=${token}`;
   //   console.log({ transporter });
 
   const mailOptions = {
