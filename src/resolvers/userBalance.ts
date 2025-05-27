@@ -26,7 +26,7 @@ const userBalanceResolver = {
             tx_ref,
             currency: "ETB",
             return_url: callBackUrl,
-            callback_url: `https://skillstream-ooy8.onrender.com/api/verify-deposit/${user_id}/${tx_ref}`,
+            callback_url: `https://skillstream-63xr.onrender.com/api/verify-deposit/${user_id}/${tx_ref}`,
           },
           {
             headers: {
