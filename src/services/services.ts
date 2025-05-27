@@ -14,7 +14,7 @@ const createChapaPayment = async (paymentInfo: any) => {
         // return_url: `http://192.168.93.13:3000/payment-success/${paymentInfo.tx_ref}`,
         // callback_url: `http://192.168.93.13:4000/api/verify-payment/${paymentInfo.contract_id}`,
         return_url: `https://skillstream-959dd.web.app/payment-success/${paymentInfo.tx_ref}`,
-        callback_url: `https://skillstream-ooy8.onrender.com/api/verify-payment/${paymentInfo.contract_id}`,
+        callback_url: `https://skillstream-63xr.onrender.com/api/verify-payment/${paymentInfo.contract_id}`,
       },
       {
         headers: {
