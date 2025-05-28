@@ -26,7 +26,7 @@ const userResolvers = {
     user: async (_: any, { id }: { id: number }, ___: any) => {
       const result = await User.findOne({
         where: { id: id },
-        include: [Skill, Job, UserBalance, {model:Feedback,as:feedbacks}],
+        include: [Skill, Job, UserBalance,Feedback],
       });
       return result;
     },
