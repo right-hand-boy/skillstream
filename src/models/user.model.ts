@@ -124,11 +124,8 @@ class User extends Model {
   @HasMany(() => Job)
   jobs?: Job[];
 
- @HasMany(() => Feedback, 'from_id')
-fromFeedbacks!: Feedback[];
-
-@HasMany(() => Feedback, 'to_id')
-toFeedbacks!: Feedback[];
+  @HasMany(() => Feedback, 'to_id')
+  feedbacks!: Feedback[];
   @HasOne(() => UserBalance)
   balance!: UserBalance;
 }
